@@ -26,4 +26,4 @@ def longest_common_prefix strs
   return strs[0][0, j]
 end
 
-puts (longest_common_prefix ["123", "123w", "1234"])
+puts (longest_common_prefix ["123", "fsdhk123w", "1234"])

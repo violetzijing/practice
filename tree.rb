@@ -254,13 +254,40 @@ class Tree
 
     return current
   end
+
+  def in_order_traverse_without_recursion node
+    stack = []
+    value = []
+    p = node
+    while p != nil or stack.length != 0
+      while p != nil
+        puts p.key
+        value << p.key
+        stack << p
+        p = p.left
+      end
+      
+      if stack.length != 0
+        p = stack.last
+        stack.pop
+        p = p.right
+      end
+    end
+
+    return value
+  end
+
+  def in_order_traverse_without_recursion_driver
+    self.in_order_traverse_without_recursion @root
+  end
 end
 
 
 tree = Tree.new
-items = [20, 15, 10, 25, 18, 12, 30]
+items = [20]
 items.each {|i| tree.insert i }
 #tree.left_rotation node
 tree.pre_order_traverse_driver
 tree.delete_node2 30
 tree.pre_order_traverse_driver
+tree.in_order_traverse_without_recursion_driver
