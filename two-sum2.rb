@@ -6,7 +6,6 @@
 def two_sum nums, target
   nums_set = {}
   minus_result = []
-  results = []
 
   i = 0
   while i < nums.length do
@@ -17,10 +16,6 @@ def two_sum nums, target
     
     nums_set[nums[i]] = i
     i += 1
-  end
-
-  results.each do |result|
-    return result if result[0] != result[1]
   end
 end
 
