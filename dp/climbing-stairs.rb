@@ -25,4 +25,4 @@ def climb_stairs n
   return all_path
 end
 
-puts climb_stairs(4)
+puts climb_stairs 11

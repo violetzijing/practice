@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-# https://leetcode.com/submissions/detail/99878686/
+#
+# https://leetcode.com/problems/reverse-integer/#/description
+#
 
 def reverse x
   result = 0

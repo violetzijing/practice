@@ -13,7 +13,7 @@ def longest_common_prefix strs
   while j < length do
     i = 1
     while i < strs.length do
-      unless strs[i][j] == strs[0][j]
+      if strs[i][j] != strs[0][j]
         common_prefix = (j == 1) ? strs[0][0] : strs[0][0, j]
         return "" if common_prefix.nil?
         return common_prefix

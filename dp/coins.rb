@@ -1,16 +1,15 @@
 #!/usr/bin/env ruby
 #
 
-require 'pry'
+def coin sum
+  given_coins = [3, 5, 7]
 
-def count_coins sum
-  coins = []
+  coin = []
   d = []
   d[0] = 0
-  given_coins = [1, 3, 5]
-  max = 2**62 - 1
-
   i = 1
+  max = 2**62 - 1
+  
   while i <= sum
     tmp = []
     tmp_coins = []
@@ -25,18 +24,11 @@ def count_coins sum
       j += 1
     end
     d[i] = tmp.min
-    coins[i] = tmp_coins[tmp.index(d[i])]
+    coin[i] = tmp_coins[tmp.index(d[i])]
     i += 1
   end
 
-  i = sum
-  choices = []
-  while i > 0
-    choices << coins[i]
-    i = i - coins[i]
-  end
-  
-  return choices
+  return d[sum]
 end
 
-puts(count_coins(11))
+puts coin 11
