@@ -3,8 +3,6 @@
 # https://leetcode.com/problems/merge-sorted-array/#/description
 #
 
-require 'pry'
-
 def merge nums1, m, nums2, n
   i = m - 1
   while i >= 0
@@ -15,13 +13,13 @@ def merge nums1, m, nums2, n
   i = n
   j = 0
   k = 0
-  while i < m + n and j < n
-    if nums1[i] < nums2[j]
-      nums1[k] = nums1[i]
-      i += 1
-    else
+  while i < n + m and j < n
+    if nums1[i] > nums2[j]
       nums1[k] = nums2[j]
       j += 1
+    else
+      nums1[k] = nums1[i]
+      i += 1
     end
     k += 1
   end
@@ -32,10 +30,11 @@ def merge nums1, m, nums2, n
       j += 1
     end
   end
-  
+
   return nums1
 end
 
-nums1 = [1]
-nums2 = [1]
-puts merge nums1, nums1.length, nums2, nums2.length
+nums1 = [1, 2, 3]
+nums2 = [4]
+result = merge nums1, nums1.length, nums2, nums2.length
+result.each {|i| print "#{i}, " }
