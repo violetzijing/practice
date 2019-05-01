@@ -25,5 +25,6 @@ func shortestToChar(S string, C byte) []int {
 		result[i] = right - i
 	}
 	// end first
+	left = right
 
 }
