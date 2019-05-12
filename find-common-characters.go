@@ -13,11 +13,21 @@ func commonChars(A []string) []string {
 	}
 	result := []string{}
 
-	for _, str := range A {
-		for _, b := range str {
-
+	strMap := map[rune]map[int]int{}
+	for index, str := range A {
+		for _, s := range str {
+			if _, ok := strMap[s][index]; ok {
+				strMap[s][index]++
+			} else {
+				strMap[s] = map[int]int{
+					index: 1,
+				}
+			}
 		}
-
 	}
 
+	for key, value := range strMap {
+		count := 0
+		if value
+	}
 }
