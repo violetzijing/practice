@@ -7,7 +7,7 @@ func main() {
 	fmt.Println(validMountainArray(input))
 }
 
-func validMountainArray(A []int) bool {
+func validMountainArray3(A []int) bool {
 	if len(A) == 0 || len(A) == 1 {
 		return false
 	}
@@ -64,4 +64,29 @@ func validMountainArray2(A []int) bool {
 	}
 
 	return !up
+}
+
+func validMountainArray(A []int) bool {
+	if len(A) < 3 {
+		return false
+	}
+	if A[0] > A[1] {
+		return false
+	}
+
+	i := 1
+	j := len(A) - 2
+	for i != j {
+		if A[i-1] < A[i] && A[j] > A[j+1] {
+			i++
+			j--
+		} else {
+			return false
+		}
+	}
+	if i == j {
+		return true
+	}
+
+	return false
 }

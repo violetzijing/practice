@@ -4,33 +4,48 @@ import "fmt"
 
 func main() {
 	input := []int{4, 5, 8, 2}
-	instance := &KthLargest{Nums: input}
-	instance.Init()
+	instance := Constructor(3, input)
 	fmt.Println(instance.Nums)
-	instance.Add(3)
-	fmt.Println(instance.Nums)
-	instance.Add(5)
-	fmt.Println(instance.Nums)
-	instance.Add(10)
-	fmt.Println(instance.Nums)
-	instance.Add(9)
-	fmt.Println(instance.Nums)
-	instance.Add(4)
-	fmt.Println(instance.Nums)
+	/*
+		instance.Add(3)
+		fmt.Println(instance.Nums)
+			instance.Add(5)
+			fmt.Println(instance.Nums)
+			instance.Add(10)
+			fmt.Println(instance.Nums)
+			instance.Add(9)
+			fmt.Println(instance.Nums)
+			instance.Add(4)
+			fmt.Println(instance.Nums)
+	*/
 }
 
 type KthLargest struct {
+	K    int
 	Nums []int
 }
 
-/*
 func Constructor(k int, nums []int) KthLargest {
+	instance := &KthLargest{K: k, Nums: nums}
+	instance.Init()
+	size := len(nums)
+	for size > k {
+		instance.DeleteMin()
+		size = len(instance.Nums)
+	}
+	return *instance
 }
-*/
 
 func (this *KthLargest) Add(val int) int {
 	this.Insert(val)
-	return 0
+	size := len(this.Nums)
+	for size > this.K {
+		this.DeleteMin()
+		size = len(this.Nums)
+		fmt.Println("size: ", size)
+		fmt.Println("k: ", this.K)
+	}
+	return this.Nums[0]
 }
 
 func (this *KthLargest) Left(parent int) int {
@@ -100,8 +115,12 @@ func (this *KthLargest) Insert(val int) {
 }
 
 func (this *KthLargest) DeleteMin() {
+	if len(this.Nums) <= 0 {
+		return
+	}
 	this.Nums[0] = this.Nums[len(this.Nums)-1]
 	this.Nums = this.Nums[:len(this.Nums)-2]
+	fmt.Println("this.Nums: ", this.Nums)
 	this.Sink(0)
 }
 
